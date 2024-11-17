@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University ID Card Maker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .id-card {
+      margin-top: 20px;
+      padding: 20px;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      background-color: #fafafa;
+      text-align: center;
+    }
+    .id-card h2 {
+      margin: 10px 0;
+      color: #007bff;
+    }
+    .id-card p {
+      margin: 5px 0;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>University ID Card Maker</h1>
+    <form id="idCardForm">
+      <input type="text" id="name" placeholder="Enter Full Name" required>
+      <input type="text" id="studentId" placeholder="Enter Student ID" required>
+      <input type="text" id="department" placeholder="Enter Department" required>
+      <input type="email" id="email" placeholder="Enter Email" required">
+      <button type="button" onclick="generateIdCard()">Generate ID Card</button>
+    </form>
+    <div id="idCardPreview" class="id-card" style="display: none;">
+      <h2>University ID Card</h2>
+      <p id="previewName"></p>
+      <p id="previewStudentId"></p>
+      <p id="previewDepartment"></p>
+      <p id="previewEmail"></p>
+    </div>
+  </div>
+
+  <script>
+    function generateIdCard() {
+      // Get form values
+      const name = document.getElementById('name').value;
+      const studentId = document.getElementById('studentId').value;
+      const department = document.getElementById('department').value;
+      const email = document.getElementById('email').value;
+
+      // Validate form
+      if (!name || !studentId || !department || !email) {
+        alert('Please fill out all fields.');
+        return;
+      }
+
+      // Display ID card
+      document.getElementById('idCardPreview').style.display = 'block';
+      document.getElementById('previewName').textContent = `Name: ${name}`;
+      document.getElementById('previewStudentId').textContent = `Student ID: ${studentId}`;
+      document.getElementById('previewDepartment').textContent = `Department: ${department}`;
+      document.getElementById('previewEmail').textContent = `Email: ${email}`;
+    }
+  </script>
+</body>
+</html>
